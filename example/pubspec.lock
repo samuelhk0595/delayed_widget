@@ -53,9 +53,9 @@ packages:
   delayed_widget:
     dependency: "direct main"
     description:
-      path: "../delayed_widget"
-      relative: true
-    source: path
+      name: delayed_widget
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "1.0.0"
   fake_async:
     dependency: transitive
