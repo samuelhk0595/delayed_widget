@@ -1,7 +1,6 @@
 name: delayed_widget
 description: A simple and ease to use flutter package, to make the widget show up in a smooth way as soon as it is created.
 version: 1.0.0
-author: Samuel Sousa<samuel.sousa.viana@live.com>
 homepage: https://github.com/samuelhk0595/delayed_widget
 
 environment:
