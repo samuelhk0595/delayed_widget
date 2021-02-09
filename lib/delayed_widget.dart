@@ -12,10 +12,20 @@ enum DelayedAnimations {
 class DelayedWidget extends StatefulWidget {
   DelayedWidget({
     Key key,
+
+    /// The Widget to be animated
     @required this.child,
+
+    /// Set the duration of the animation
     this.animationDuration,
+
+    /// Set the duration of delay to start animation
     this.delayDuration,
-    this.animation = DelayedAnimations.SLIDE_FROM_RIGHT,
+
+    /// Set the animation
+    this.animation = DelayedAnimations.SLIDE_FROM_BOTTOM,
+
+    /// Set animation enabled/disbled
     this.enabled = true,
   }) : super(key: key);
 
@@ -29,7 +39,8 @@ class DelayedWidget extends StatefulWidget {
   _DelayedWidgetState createState() => _DelayedWidgetState();
 }
 
-class _DelayedWidgetState extends State<DelayedWidget> with SingleTickerProviderStateMixin {
+class _DelayedWidgetState extends State<DelayedWidget>
+    with SingleTickerProviderStateMixin {
   AnimationController animationController;
 
   Animation<double> animation;
@@ -92,6 +103,7 @@ class _DelayedWidgetState extends State<DelayedWidget> with SingleTickerProvider
       case DelayedAnimations.SLIDE_FROM_BOTTOM:
         return Offset(0.0, extent * animation.value);
     }
+    return Offset(0.0, 0.0);
   }
 
   dispose() {
