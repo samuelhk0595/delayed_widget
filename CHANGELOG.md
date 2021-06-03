@@ -11,3 +11,7 @@
 * Changes default animation.
 * Adds more examples to Example Project.
 * Adds demo gifs.
+
+## [1.1.0] - 2021-06-02.
+
+* Migrates to null safety
