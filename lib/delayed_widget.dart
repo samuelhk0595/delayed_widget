@@ -42,7 +42,7 @@ class DelayedWidget extends StatefulWidget {
 class _DelayedWidgetState extends State<DelayedWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
-
+  bool isAnimationControllerDisposed = false;
   late Animation<double> animation;
 
   @override
@@ -64,7 +64,8 @@ class _DelayedWidgetState extends State<DelayedWidget>
 
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) async {
       await Future.delayed(widget.delayDuration);
-      if (widget.enabled) animationController.forward();
+      if (widget.enabled && !isAnimationControllerDisposed)
+        animationController.forward();
     });
   }
 
@@ -103,11 +104,11 @@ class _DelayedWidgetState extends State<DelayedWidget>
       case DelayedAnimations.SLIDE_FROM_BOTTOM:
         return Offset(0.0, extent * animation.value);
     }
-    return Offset(0.0, 0.0);
   }
 
   dispose() {
     animationController.dispose();
+    isAnimationControllerDisposed = true;
     super.dispose();
   }
 }
