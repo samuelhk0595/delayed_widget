@@ -11,16 +11,16 @@ enum DelayedAnimations {
 
 class DelayedWidget extends StatefulWidget {
   DelayedWidget({
-    Key key,
+    Key? key,
 
     /// The Widget to be animated
-    @required this.child,
+    required this.child,
 
     /// Set the duration of the animation
-    this.animationDuration,
+    this.animationDuration = const Duration(milliseconds: 300),
 
     /// Set the duration of delay to start animation
-    this.delayDuration,
+    this.delayDuration = Duration.zero,
 
     /// Set the animation
     this.animation = DelayedAnimations.SLIDE_FROM_BOTTOM,
@@ -41,16 +41,16 @@ class DelayedWidget extends StatefulWidget {
 
 class _DelayedWidgetState extends State<DelayedWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
+  late AnimationController animationController;
 
-  Animation<double> animation;
+  late Animation<double> animation;
 
   @override
   void initState() {
     super.initState();
 
     animationController = AnimationController(
-      duration: widget.animationDuration ?? Duration(milliseconds: 300),
+      duration: widget.animationDuration,
       vsync: this,
     );
 
@@ -62,8 +62,8 @@ class _DelayedWidgetState extends State<DelayedWidget>
       curve: Curves.easeOut,
     ));
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Future.delayed(widget.delayDuration ?? Duration(seconds: 0));
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) async {
+      await Future.delayed(widget.delayDuration);
       if (widget.enabled) animationController.forward();
     });
   }
