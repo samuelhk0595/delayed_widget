@@ -14,7 +14,7 @@ A simple and easy to use flutter package, to make widgets show up in a smooth wa
 
 ```yaml
 dependencies:
-  delayed_widget: ^1.0.2
+  delayed_widget: ^1.1.0
 ```
 
 ### Easy to use
