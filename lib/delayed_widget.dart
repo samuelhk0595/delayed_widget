@@ -62,7 +62,7 @@ class _DelayedWidgetState extends State<DelayedWidget>
       curve: Curves.easeOut,
     ));
 
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Future.delayed(widget.delayDuration);
       if (widget.enabled && !isAnimationControllerDisposed)
         animationController.forward();
