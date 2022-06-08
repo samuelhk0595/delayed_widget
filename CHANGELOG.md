@@ -19,3 +19,7 @@
 ## [1.1.1] - 2021-06-03.
 
 * Migrates to null safety
+
+## [1.1.1] - 2021-06-03.
+
+* Migrates to flutter 3
